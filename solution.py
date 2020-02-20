@@ -87,14 +87,27 @@ for i in range(1,len(order_books_in_lib)):
 
 
 
+order_books_in_lib = [x for x in order_books_in_lib if x != []]
+nb_lib = len(order_books_in_lib)
+
+op = []
+for i in range(len(order_of_lib)):
+    op.append([order_of_lib[i],len(books_in_lib[i])])
+    
+
+out = []
+for i in range(len(order_books_in_lib)):
+    out.append([op[i], order_books_in_lib[i]])
+
+for i in range(len(out)):
+    for j in range(len(out[i])):
+        for k in range(len(out[i][j])):
+            out[i][j][k] = str(out[i][j][k])
+        out[i][j] = [' '.join(out[i][j])]
 
 
 
-
-
-
-
-
-
-
-
+with open('data/output/cout.txt','w') as f:
+    f.write(str('{}\n'.format(nb_lib)))
+    for i in range(len(out)):
+        f.write('{}\n{}\n'.format(out[i][0][0],out[i][1][0]))
