@@ -61,7 +61,40 @@ for i in range(len(books_in_lib)):
 del i,j,lib_scores,books_in_lib_score,p
 
 
-order_books_in_lib = [[1,2,3,4],[1,2,5,6],[1,2,3,7,8,9]]
+
+
+
+nb_days = [n_days]
+for i in range(n_lib):
+    nb_days.append(nb_days[i] - n_signup_days[order_of_lib[i]])
+del nb_days[0]
+
+nb_books = []
+for i in range(n_lib):
+    nb_books.append(int(nb_days[i]*n_books_ship[order_of_lib[i]]))
+
+
+
+
+for i in range(len(order_books_in_lib)):
+    order_books_in_lib[i] = order_books_in_lib[i][0:nb_books[i]]
+    
+    
+
 for i in range(1,len(order_books_in_lib)):
     for j in range(0,i):
         order_books_in_lib[i] = [x for x in order_books_in_lib[i] if x not in order_books_in_lib[j]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
