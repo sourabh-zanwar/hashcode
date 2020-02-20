@@ -34,11 +34,46 @@ n_signup_days = np.array(n_signup_days)
 n_books_ship = np.array(n_books_ship)
 
 
+books_in_lib_score = []
+for i in range(len(books_in_lib)):
+    books_in_lib_score.append([])
+    for j in range(len(books_in_lib[i])):
+        books_in_lib_score[i].append(book_value[books_in_lib[i][j]])
+
 book_scores = []
 for i in range(len(books_in_lib)):
-    book_scores.append(0)
-    for j in range(len(books_in_lib[i])):
-        book_scores[i] = book_scores[i] + book_value[books_in_lib[i][j]]
-book_scores = np.array(book_scores)
+    book_scores.append(sum(books_in_lib_score[i]))
 lib_scores = book_scores/((n_books_ship/n_books_lib)+n_signup_days)
+lib_scores = lib_scores.tolist()
+order_of_lib = []
+for i in range(len(lib_scores)):
+    order_of_lib.append((lib_scores.index(max(lib_scores))))
+    lib_scores[order_of_lib[i]] = 0
+    
+
+order_books_in_lib = []
+for i in range(len(books_in_lib)):
+    order_books_in_lib.append([])
+    for j in range(len(books_in_lib[i])):
+        p = books_in_lib_score[i].index(max(books_in_lib_score[i]))
+        order_books_in_lib[i].append(books_in_lib[i][p])
+        books_in_lib_score[i][p] = 0
+del i,j,lib_scores,books_in_lib_score,p
+
+
+
+
+for i in range(1,len(order_books_in_lib)):
+        order_books_in_lib[i] = 
+        
+
+
+
+
+
+
+
+
+
+
 
