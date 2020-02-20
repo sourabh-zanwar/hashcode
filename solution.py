@@ -61,19 +61,7 @@ for i in range(len(books_in_lib)):
 del i,j,lib_scores,books_in_lib_score,p
 
 
-
-
+order_books_in_lib = [[1,2,3,4],[1,2,5,6],[1,2,3,7,8,9]]
 for i in range(1,len(order_books_in_lib)):
-        order_books_in_lib[i] = 
-        
-
-
-
-
-
-
-
-
-
-
-
+    for j in range(0,i):
+        order_books_in_lib[i] = [x for x in order_books_in_lib[i] if x not in order_books_in_lib[j]]
